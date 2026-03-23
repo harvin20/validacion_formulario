@@ -1,0 +1,48 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-family: helvetica;
+  font-size: 16px;
+  line-height: 24px;
+
+}
+.titulo{
+ 
+  text-align: center;
+  width: 1200px;
+  margin: auto;
+}
+.contenedor_form{
+  border: 1px black solid;
+  padding: 10px;
+  max-width: 90%;
+  margin: auto;
+  border-radius: 10px;
+  background-color: rgb(211, 208, 208);
+}
+
+.elementos{
+  width: 400px;
+ padding: 10px;
+ margin: 10px;
+}
+
+.elementos2{
+  width: 300px;
+  padding: 10px;
+}
+h2{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn_rojo{
+  background-color: #800000;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+}

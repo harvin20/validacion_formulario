@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Ejercico 4</title>
+</head>
+
+<body>
+    <div class="titulo">
+        <h1>VALIDACION DE ELEMENTOS DE FORMULARIO</h1>
+    </div>
+    <br><br>
+    <div class="contenedor_form">
+        <form action="loquesea.php" method="get" name="formulario" id="formulario" >
+            <h2>DATOS ALUMNO:</h2>
+            <input type="text" placeholder="Escribe tu nombre" name="nombre" id="nombrecompleto" class="elementos">
+            <br>
+            <input type="email" placeholder="Escribe tu email" name="email" id="email" class="elementos">
+            <br><br>
+            <h2>ACTIVIDADES EXTRAESCOLARES</h2>
+            <br>
+            <input type="checkbox" name="deportes" value="deporte" class="actividades">
+            <label for="deporte">Deporte(futbol,basketball,volleyball)</label>
+            <br>
+            <input type="checkbox" name="club" value="programacion" class="actividades">
+            <label for="programacion">Club de Programación</label>
+            <br>
+            <input type="checkbox" name="Capitulo" value="capitulo" class="actividades">
+            <label for="sistemas">Capitulo de Sistemas</label>
+            <br><br>
+            <h2>DOMINIO DEL IDIOMIA INGLES:</h2>
+            <br>
+            <input type="radio" name="idiomas" value="AVANZADO" class="idioma">
+            <span>Avanzado</span>
+            <br>
+            <input type="radio" name="idiomas" value="INTERMEDIO" class="idioma">
+            <span>Intermedio</span>
+            <br>
+            <input type="radio" name="idiomas" value="BASICO" class="idioma">
+            <span>Basico</span>
+            <br><br>
+            <h2>UNIDADES:</h2>
+            <br>
+            <select name="unidades" id="unidades" class="elementos2">
+                <option value="unidad 1">Unidad 1</option>
+                <option value="unidad 2">Unidad 2</option>
+                <option value="unidad 3">Unidad 3</option>
+                <option value="Proyecto Final">Proyecto Final</option>
+            </select>
+            <br><br>
+            <button type="button" id="btn_valida" class="btn_rojo">Validar elementos</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            $("#btn_valida").click(function () {
+
+                let nombre = $("#nombrecompleto").val().trim();
+                let email = $("#email").val().trim();
+                let unidades = $("#unidades").val();
+
+                let expresionCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (nombre === '') {
+                    alert("No escribiste tu nombre");
+                    $("#nombrecompleto").focus();
+                    return false;
+                }
+
+                if (email === '') {
+                    alert("No escribiste el correo");
+                    $("#email").focus();
+                    return false;
+                }
+
+                if (!expresionCorreo.test(email)) {
+                    alert("Correo no válido");
+                    $("#email").focus();
+                    return false;
+                }
+
+                if (unidades === '') {
+                    alert("Selecciona una unidad");
+                    $("#unidades").focus();
+                    return false;
+                }
+                if (!$(".actividades").is(":checked")) {
+                    alert("deber seleccionar al menos una actividad extraescolar");
+                    $(".actividades").first().focus();
+                    return false;
+                }
+                if(!$(".idioma").is(":checked")){
+                    alert("debes seleccionar tu dominio del idioma ingles ");
+                    $(".idioma").first().focus();
+                    return false
+                }
+
+                $("#formulario")[0].submit();
+
+            });
+
+        });
+    </script>
+</body>
+
+
+</html>
